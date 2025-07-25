@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Билет забронирован</title>
+  <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+  <div class="ticket-box">
+    <h1>🎉 Билет забронирован!</h1>
+    <p>Спасибо за бронирование. Ниже информация о вашем билете:</p>
+
+    <div class="ticket-info" id="ticket-details">
+      <p><strong>Фильм:</strong> <span id="filmName"></span></p>
+      <p><strong>Зал:</strong> <span id="hallName"></span></p>
+      <p><strong>Время:</strong> <span id="time"></span></p>
+      <p><strong>Место:</strong> <span id="seat"></span></p>
+    </div>
+
+    <a href="index.html" class="btn-download" onclick="window.print()">На главную</a>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById('filmName').textContent = params.get('film') || '-';
+    document.getElementById('hallName').textContent = params.get('hall') || '-';
+    document.getElementById('time').textContent = params.get('time') || '-';
+    document.getElementById('seat').textContent = params.get('seat') || '-';
+  </script>
+</body>
+</html>

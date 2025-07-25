@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Бронирование</title>
+  <link rel="stylesheet" href="booking.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🎟️ Забронируй билет</h1>
+    <form class="booking-form" onsubmit="event.preventDefault(); goToSuccessPage();">
+      <div class="form-group">
+        <label for="film">Фильм:</label>
+        <select id="film" required>
+          <option value="">Выберите фильм</option>
+          <option value="Жезде">Кара дуба</option>
+          <option value="Аватар">Аватар</option>
+          <option value="Барби">Барби</option>
+          <option value="Барби">Жезде</option>
+          <option value="Барби">Жубайым</option>
+          <option value="Барби">102</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="hall">Зал:</label>
+        <select id="hall" required>
+          <option value="">Выберите зал</option>
+          <option value="Зал 1 — уточнять по номеру телефона">Зал 1</option>
+          <option value="Зал 2 — 30 мест">Зал 2</option>
+          <option value="Зал 3 — бронируется полностью">Зал 3</option>
+          <option value="Зал 4 — уточнять по номеру телефона">Зал 4</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="time">Время:</label>
+        <select id="time" required>
+          <option value="">Выберите время</option>
+          <option value="10:00">10:00</option>
+          <option value="11:00">11:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:30">14:30</option>
+          <option value="16:00">16:00</option>
+          <option value="18:00">18:00</option>
+          <option value="20:00">20:00</option>
+          <option value="22:00">22:00</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="seat">Место:</label>
+        <input type="text" id="seat" placeholder="Например: A5" required />
+      </div>
+      
+      <div class="qr-section">
+        <h3>Оплата</h3>
+        <p>К оплате: <strong>200 сомов</strong></p>
+        <img src="" alt="QR код для оплаты" class="qr-img">
+      </div>
+      <button type="submit">Забронировать</button>
+    </form>
+  </div>
+
+  <script>
+    function goToSuccessPage() {
+      const film = document.getElementById('film').value;
+      const hall = document.getElementById('hall').value;
+      const time = document.getElementById('time').value;
+      const seat = document.getElementById('seat').value;
+
+      if (!film || !hall || !time || !seat) {
+        alert('Пожалуйста, заполните все поля.');
+        return;
+      }
+
+      const queryString = `?film=${encodeURIComponent(film)}&hall=${encodeURIComponent(hall)}&time=${encodeURIComponent(time)}&seat=${encodeURIComponent(seat)}`;
+      window.location.href = `success.html${queryString}`;
+    }
+  </script>
+</body>
+</html>
